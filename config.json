@@ -1,0 +1,8 @@
+{
+    "mockConfig": [
+        {
+            "host": "www.example.com",
+            "enable": true
+        }
+    ]
+}
