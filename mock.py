@@ -1,4 +1,5 @@
 from mitmproxy import http
+from mitmproxy import ctx
 from urllib import parse
 import json
 import os
@@ -11,8 +12,11 @@ def getMockData(host, path):
 
     for item in config.get("mockConfig"):
         if item.get("host") == host and item.get("enable"):
-            with open(base_dir + "/datas/"+host+path, "r") as data:
-                return data.read()
+            try:
+                with open(base_dir + "/datas/"+host+path, "r") as data:
+                    return data.read()
+            except IOError:
+                ctx.log.info("not support " + path + " for " + host)
     return None
 
 def request(flow: http.HTTPFlow) -> None:

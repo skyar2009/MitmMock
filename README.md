@@ -31,7 +31,8 @@ datas
 [mitmproxy 安装](https://docs.mitmproxy.org/stable/overview-installation/)
 
 ```
-mitmproxy -s [MitmMock]/mock.py
+# 需要在本项目根目录下执行
+mitmproxy -p [port] --listen-host [ip] -s mock.py
 ```
 
 ## 手机设置
