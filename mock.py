@@ -7,8 +7,12 @@ import os
 base_dir = os.getcwd()
 
 def getMockData(host, path):
-    with open(base_dir + "/config.json", "r") as config_f:
-        config = json.load(config_f)
+    try:
+        with open(base_dir + "/config.json", "r") as config_f:
+            config = json.load(config_f)
+    except IOError:
+        ctx.log.error("Please start mitmproxy at root dir of MitmMock or Check config file")
+        return None
 
     for item in config.get("mockConfig"):
         if item.get("host") == host and item.get("enable"):
@@ -16,7 +20,7 @@ def getMockData(host, path):
                 with open(base_dir + "/datas/"+host+path, "r") as data:
                     return data.read()
             except IOError:
-                ctx.log.info("not support " + path + " for " + host)
+                ctx.log.info("Not support " + path + " for " + host)
     return None
 
 def request(flow: http.HTTPFlow) -> None:
