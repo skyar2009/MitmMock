@@ -11,14 +11,15 @@ mock 接口的 host 与 其开启状态配置
     "mockConfig": [
         {
             "host": "www.example.com",
-            "enable": true
+            "enable": true,
+            "dir":"www.example.com"
         }
     ]
 }
 ```
 
 ## mock 数据放置
-在 datas 目录下建一个 host 对应的目录，然后根据需要 mock 接口的 path 建相应的目录与文件。以下面的目录结构为例，实际 mock 的接口是 http://www.example.com/hello 和 http://www.example.com/test/aa。
+在 datas 目录下建一个 host 对应的目录 www.example.com，然后根据需要 mock 接口的 path 建相应的目录与文件。以下面的目录结构为例，实际 mock 的接口是 http://www.example.com/hello 和 http://www.example.com/test/aa。
 ```
 datas
 └── www.example.com
