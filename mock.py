@@ -17,7 +17,7 @@ def getMockData(host, path):
     for item in config.get("mockConfig"):
         if item.get("host") == host and item.get("enable"):
             try:
-                with open(base_dir + "/datas/"+host+path, "r") as data:
+                with open(base_dir + "/datas/" + item.get("dir") + path, "r") as data:
                     return data.read()
             except IOError:
                 ctx.log.info("Not support " + path + " for " + host)
